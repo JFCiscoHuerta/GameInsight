@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">GameInsight</string>
+
+    <string-array name="order_options" Color="white">
+        <item>Popular</item>
+        <item>Year</item>
+        <item>Rating</item>
+    </string-array>
+
+    <string-array name="platform_options">
+        <item>Xbox</item>
+        <item>PC</item>
+        <item>PlayStation</item>
+        <item>Nintendo Switch</item>
+    </string-array>
+
 </resources>
