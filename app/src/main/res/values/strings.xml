@@ -7,7 +7,7 @@
         <item>Rating</item>
     </string-array>
 
-    <string-array name="platform_options">
+    <string-array name="platform_options" Color="white">
         <item>Xbox</item>
         <item>PC</item>
         <item>PlayStation</item>
