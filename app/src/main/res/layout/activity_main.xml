@@ -1,19 +1,582 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:fitsSystemWindows="true"
+    android:paddingBottom="16dp"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/black"
     tools:context=".MainActivity">
-    <TextView
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:text="Hello World!"
-      app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintTop_toTopOf="parent" />
 
-  </androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!-- Toolbar -->
+        <include
+            layout="@layout/toolbar" />
+
+        <ScrollView
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="70dp"
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+            tools:ignore="MissingConstraints">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="8dp">
+
+                <!-- Título principal -->
+                <TextView
+                    android:id="@+id/main_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Game Reviews and more!"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    app:layout_constraintTop_toBottomOf="@id/toolbar"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_gravity="center"/>
+
+                <!-- Menús -->
+                <LinearLayout
+                    android:id="@+id/menus_layout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="16dp"
+                    android:gravity="center"
+                    app:layout_constraintTop_toBottomOf="@id/main_title"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:backgroundTint="@color/white">
+
+                    <!-- Menú 1: Order By -->
+                    <Spinner
+                        android:id="@+id/spinner_order"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:spinnerMode="dropdown"
+                        android:entries="@array/order_options"/>
+
+                    <!-- Espaciador -->
+                    <Space
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:backgroundTint="@color/gray">
+
+                    </Space>
+
+                    <!-- Menú 2: Platform -->
+                    <Spinner
+                        android:id="@+id/spinner_platform"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:spinnerMode="dropdown"
+                        android:entries="@array/platform_options" />
+                </LinearLayout>
+
+                <!-- Card -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/game_card"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:elevation="4dp"
+                    app:cardCornerRadius="12dp"
+                    app:layout_constraintTop_toBottomOf="@id/menus_layout"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/gray"
+                        android:orientation="vertical">
+
+                        <!-- Imagen del videojuego -->
+                        <ImageView
+                            android:id="@+id/game_image"
+                            android:layout_width="match_parent"
+                            android:layout_height="200dp"
+                            android:scaleType="centerCrop" />
+
+                        <!-- Iconos de plataformas -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center"
+                            android:padding="8dp"
+                            android:layout_marginTop="8dp">
+
+                            <ImageView
+                                android:id="@+id/icon_xbox"
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:contentDescription="Xbox Icon"
+                                android:layout_marginEnd="8dp" />
+
+                            <ImageView
+                                android:id="@+id/icon_pc"
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:contentDescription="PC Icon"
+                                android:layout_marginEnd="8dp" />
+
+                            <ImageView
+                                android:id="@+id/icon_ps"
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:contentDescription="PlayStation Icon"
+                                android:layout_marginEnd="8dp" />
+
+                            <ImageView
+                                android:id="@+id/icon_nintendo"
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:contentDescription="Nintendo Icon" />
+                        </LinearLayout>
+
+                        <!-- Nombre del videojuego -->
+                        <TextView
+                            android:id="@+id/game_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginEnd="16dp"
+                            android:text="S.T.A.L.K.E.R. 2: Heart Of Chernobyl"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/white" />
+
+                        <!-- Rating y género -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginEnd="16dp">
+
+                            <!-- Rating -->
+                            <TextView
+                                android:id="@+id/game_rating"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Rating: 12"
+                                android:paddingRight="10dp"
+                                android:textSize="14sp"
+                                android:textColor="@color/white" />
+
+                            <!-- Género -->
+                            <TextView
+                                android:id="@+id/game_genre"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Genre: Action, RPG, Indie"
+                                android:textSize="14sp"
+                                android:textColor="@color/white" />
+                        </LinearLayout>
+
+                        <!-- Botón de detalles -->
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/view_details_button"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="16dp"
+                            android:layout_gravity="center"
+                            android:text="View Details"
+                            android:textColor="@android:color/black"
+                            android:padding="8dp"
+                            app:backgroundTint="@color/white"
+                            app:cornerRadius="16dp" />
+
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <!-- Card -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/game_card_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:elevation="4dp"
+                    app:cardCornerRadius="12dp"
+                    app:layout_constraintTop_toBottomOf="@id/menus_layout"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/gray"
+                        android:orientation="vertical">
+
+                        <!-- Imagen del videojuego -->
+                        <ImageView
+                            android:id="@+id/game_image_2"
+                            android:layout_width="match_parent"
+                            android:layout_height="200dp"
+                            android:scaleType="centerCrop" />
+
+                        <!-- Iconos de plataformas -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center"
+                            android:padding="8dp"
+                            android:layout_marginTop="8dp">
+
+                            <ImageView
+                                android:id="@+id/icon_xbox_2"
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:contentDescription="Xbox Icon"
+                                android:layout_marginEnd="8dp" />
+
+                            <ImageView
+                                android:id="@+id/icon_pc_2"
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:contentDescription="PC Icon"
+                                android:layout_marginEnd="8dp" />
+
+                            <ImageView
+                                android:id="@+id/icon_ps_2"
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:contentDescription="PlayStation Icon"
+                                android:layout_marginEnd="8dp" />
+
+                            <ImageView
+                                android:id="@+id/icon_nintendo_2"
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:contentDescription="Nintendo Icon" />
+                        </LinearLayout>
+
+                        <!-- Nombre del videojuego -->
+                        <TextView
+                            android:id="@+id/game_title_2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginEnd="16dp"
+                            android:text="S.T.A.L.K.E.R. 2: Heart Of Chernobyl"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/white" />
+
+                        <!-- Rating y género -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginEnd="16dp">
+
+                            <!-- Rating -->
+                            <TextView
+                                android:id="@+id/game_rating_2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Rating: 12"
+                                android:paddingRight="10dp"
+                                android:textSize="14sp"
+                                android:textColor="@color/white" />
+
+                            <!-- Género -->
+                            <TextView
+                                android:id="@+id/game_genre_2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Genre: Action, RPG, Indie"
+                                android:textSize="14sp"
+                                android:textColor="@color/white" />
+                        </LinearLayout>
+
+                        <!-- Botón de detalles -->
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/view_details_button_2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="16dp"
+                            android:layout_gravity="center"
+                            android:text="View Details"
+                            android:textColor="@android:color/black"
+                            android:padding="8dp"
+                            app:backgroundTint="@color/white"
+                            app:cornerRadius="16dp" />
+
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <!-- Card -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/game_card_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:elevation="4dp"
+                    app:cardCornerRadius="12dp"
+                    app:layout_constraintTop_toBottomOf="@id/menus_layout"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/gray"
+                        android:orientation="vertical">
+
+                        <!-- Imagen del videojuego -->
+                        <ImageView
+                            android:id="@+id/game_image_3"
+                            android:layout_width="match_parent"
+                            android:layout_height="200dp"
+                            android:scaleType="centerCrop" />
+
+                        <!-- Iconos de plataformas -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center"
+                            android:padding="8dp"
+                            android:layout_marginTop="8dp">
+
+                            <ImageView
+                                android:id="@+id/icon_xbox_3"
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:contentDescription="Xbox Icon"
+                                android:layout_marginEnd="8dp" />
+
+                            <ImageView
+                                android:id="@+id/icon_pc_3"
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:contentDescription="PC Icon"
+                                android:layout_marginEnd="8dp" />
+
+                            <ImageView
+                                android:id="@+id/icon_ps_3"
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:contentDescription="PlayStation Icon"
+                                android:layout_marginEnd="8dp" />
+
+                            <ImageView
+                                android:id="@+id/icon_nintendo_3"
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:contentDescription="Nintendo Icon" />
+                        </LinearLayout>
+
+                        <!-- Nombre del videojuego -->
+                        <TextView
+                            android:id="@+id/game_title_3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginEnd="16dp"
+                            android:text="S.T.A.L.K.E.R. 2: Heart Of Chernobyl"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/white" />
+
+                        <!-- Rating y género -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginEnd="16dp">
+
+                            <!-- Rating -->
+                            <TextView
+                                android:id="@+id/game_rating_3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Rating: 12"
+                                android:paddingRight="10dp"
+                                android:textSize="14sp"
+                                android:textColor="@color/white" />
+
+                            <!-- Género -->
+                            <TextView
+                                android:id="@+id/game_genre_3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Genre: Action, RPG, Indie"
+                                android:textSize="14sp"
+                                android:textColor="@color/white" />
+                        </LinearLayout>
+
+                        <!-- Botón de detalles -->
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/view_details_button_3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="16dp"
+                            android:layout_gravity="center"
+                            android:text="View Details"
+                            android:textColor="@android:color/black"
+                            android:padding="8dp"
+                            app:backgroundTint="@color/white"
+                            app:cornerRadius="16dp" />
+
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <!-- Paginacion -->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_marginTop="16dp">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center">
+
+                        <TextView
+                            android:id="@+id/btn_previous"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:text="←"
+                            android:textSize="16sp"
+                            android:gravity="center"
+                            android:background="@drawable/circle_background"
+                            android:textColor="@android:color/black"
+                            android:layout_marginEnd="8dp" />
+
+                        <TextView
+                            android:id="@+id/page_1"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:text="1"
+                            android:textSize="16sp"
+                            android:gravity="center"
+                            android:background="@drawable/circle_background"
+                            android:textColor="@android:color/black"
+                            android:layout_marginEnd="8dp" />
+
+                        <TextView
+                            android:id="@+id/page_2"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:text="2"
+                            android:textSize="16sp"
+                            android:gravity="center"
+                            android:background="@drawable/circle_background"
+                            android:textColor="@android:color/black"
+                            android:layout_marginEnd="8dp" />
+
+                        <TextView
+                            android:id="@+id/page_3"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:text="3"
+                            android:textSize="16sp"
+                            android:gravity="center"
+                            android:background="@drawable/circle_background"
+                            android:textColor="@android:color/black"
+                            android:layout_marginEnd="8dp" />
+
+                        <TextView
+                            android:id="@+id/btn_next"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:text="→"
+                            android:textSize="16sp"
+                            android:gravity="center"
+                            android:background="@drawable/circle_background"
+                            android:textColor="@android:color/black" />
+                    </LinearLayout>
+                </RelativeLayout>
+
+            </LinearLayout>
+
+        </ScrollView>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+    <!-- Boton flotante -->
+    <RelativeLayout
+        android:id="@+id/fab_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!-- Botón para "Logos" -->
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_avhives"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginBottom="152dp"
+            android:layout_marginEnd="16dp"
+            android:visibility="gone"
+            android:backgroundTint="@color/white"
+            app:srcCompat="@drawable/ic_achives"/>
+
+        <!-- Botón para "DLCs" -->
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_dlcs"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginBottom="82dp"
+            android:layout_marginEnd="16dp"
+            android:visibility="gone"
+            android:backgroundTint="@color/white"
+            app:srcCompat="@drawable/ic_complemento"/>
+
+        <!-- Botón principal -->
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_main"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_margin="16dp"
+            android:backgroundTint="@color/white"
+            app:srcCompat="@drawable/ic_mas"/>
+    </RelativeLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
