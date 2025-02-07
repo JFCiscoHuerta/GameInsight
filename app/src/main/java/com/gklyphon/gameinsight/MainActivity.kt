@@ -13,7 +13,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 class MainActivity : AppCompatActivity() {
 
     private lateinit var fabMain: FloatingActionButton
-    private lateinit var fabLogos: FloatingActionButton
+    private lateinit var fabAchives: FloatingActionButton
     private lateinit var fabDlcs: FloatingActionButton
     private var isFabMenuOpen = false
 
@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         fabMain = findViewById(R.id.fab_main)
-        fabLogos = findViewById(R.id.fab_logos)
+        fabAchives = findViewById(R.id.fab_avhives)
         fabDlcs = findViewById(R.id.fab_dlcs)
 
         // Cargar animaciones
@@ -34,22 +34,22 @@ class MainActivity : AppCompatActivity() {
         fabMain.setOnClickListener {
             if (isFabMenuOpen) {
                 // Cerrar el menú
-                fabLogos.startAnimation(fabClose)
+                fabAchives.startAnimation(fabClose)
                 fabDlcs.startAnimation(fabClose)
-                fabLogos.visibility = View.GONE
+                fabAchives.visibility = View.GONE
                 fabDlcs.visibility = View.GONE
             } else {
                 // Abrir el menú
-                fabLogos.startAnimation(fabOpen)
+                fabAchives.startAnimation(fabOpen)
                 fabDlcs.startAnimation(fabOpen)
-                fabLogos.visibility = View.VISIBLE
+                fabAchives.visibility = View.VISIBLE
                 fabDlcs.visibility = View.VISIBLE
             }
             isFabMenuOpen = !isFabMenuOpen
         }
 
         // Configurar el clic del botón "Logos"
-        fabLogos.setOnClickListener {
+        fabAchives.setOnClickListener {
             // Acción para el botón "Logos"
         }
 
