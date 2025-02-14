@@ -1,14 +1,17 @@
 package com.gklyphon.gameinsight
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
+import android.widget.Button
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.gklyphon.gameinsight.activities.DetailsActivity
 import com.gklyphon.gameinsight.adapters.GameAdapter
 import com.gklyphon.gameinsight.models.Game
 import com.gklyphon.gameinsight.models.GameResponse
@@ -46,6 +49,7 @@ class MainActivity : AppCompatActivity() {
         fabAchives = findViewById(R.id.fab_avhives)
         fabDlcs = findViewById(R.id.fab_dlcs)
         configureView()
+
     }
 
     private fun configureView() {
