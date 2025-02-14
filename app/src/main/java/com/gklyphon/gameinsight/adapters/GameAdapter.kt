@@ -1,5 +1,6 @@
 package com.gklyphon.gameinsight.adapters
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,7 +9,9 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.gklyphon.gameinsight.R
+import com.gklyphon.gameinsight.activities.DetailsActivity
 import com.gklyphon.gameinsight.models.Game
+import com.google.android.material.button.MaterialButton
 
 /**
  * Adapter for displaying a list of games in a RecyclerView.
@@ -29,6 +32,7 @@ class GameAdapter(private var games: List<Game>) : RecyclerView.Adapter<GameAdap
         val gameImage: ImageView = view.findViewById(R.id.game_image)
         val gameRating: TextView = view.findViewById(R.id.game_rating)
         val gameGenre: TextView = view.findViewById(R.id.game_genre)
+        val detailsButton: MaterialButton = view.findViewById(R.id.view_details_button)
     }
 
     /**
@@ -58,6 +62,15 @@ class GameAdapter(private var games: List<Game>) : RecyclerView.Adapter<GameAdap
         Glide.with(holder.itemView.context)
             .load(game.background_image)
             .into(holder.gameImage)
+
+        holder.detailsButton.setOnClickListener {
+            val context = holder.itemView.context
+            val intent = Intent(context, DetailsActivity::class.java)
+            intent.putExtra("GAME_ID", game.id)  // Pasar datos del juego
+            intent.putExtra("GAME_NAME", game.name)
+            context.startActivity(intent)
+        }
+
     }
 
     /**
