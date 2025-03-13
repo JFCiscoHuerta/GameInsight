@@ -3,12 +3,16 @@ package com.gklyphon.gameinsight
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.Gravity
 import android.view.View
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.Button
+import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.gklyphon.gameinsight.activities.DetailsActivity
@@ -34,6 +38,12 @@ class MainActivity : AppCompatActivity() {
     private lateinit var fabDlcs: FloatingActionButton
     private var isFabMenuOpen = false
 
+    private lateinit var paginationLayout: LinearLayout
+    private lateinit var previousButton: TextView
+    private lateinit var nextButton: TextView
+    private var currentPage = 1
+    private var totalPages = 10
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -43,12 +53,19 @@ class MainActivity : AppCompatActivity() {
         recyclerView.layoutManager = LinearLayoutManager(this)
         gameAdapter = GameAdapter(gameList)
         recyclerView.adapter = gameAdapter
-        fetchGames()
+
+        paginationLayout = findViewById(R.id.pagination_layout)
+        previousButton = findViewById(R.id.btn_previous)
+        nextButton = findViewById(R.id.btn_next)
 
         fabMain = findViewById(R.id.fab_main)
         fabAchives = findViewById(R.id.fab_avhives)
         fabDlcs = findViewById(R.id.fab_dlcs)
         configureView()
+
+        configureView()
+        setupPagination()
+        fetchGames(currentPage)
 
     }
 
@@ -92,15 +109,17 @@ class MainActivity : AppCompatActivity() {
      * This method makes an asynchronous HTTP request to retrieve a list of games.
      * If the request is successful, the retrieved games are added to the game list
      * and displayed in the adapter. If the request fails, an error is logged.
+     *
+     * @author JFCiscoHuerta
      */
-    private fun fetchGames() {
+    private fun fetchGames(page: Int) {
 
         /**
          * Makes a request to the RAWG API to fetch a list of games.
          *
          * @param apiKey - The API key required for authentication.
          */
-        RetrofitClient.instance.getGames(apiKey).enqueue(object : Callback<GameResponse> {
+        RetrofitClient.instance.getGames(apiKey, page = page).enqueue(object : Callback<GameResponse> {
 
             /**
              * Called when the HTTP request receives a response.
@@ -111,8 +130,11 @@ class MainActivity : AppCompatActivity() {
             override fun onResponse(call: Call<GameResponse>, response: Response<GameResponse>) {
                 if (response.isSuccessful) {
                     response.body()?.results?.let { games ->
+                        gameList.clear()
                         gameList.addAll(games)
                         gameAdapter.updateGames(gameList)
+                        recyclerView.scrollToPosition(0)
+                        setupPagination()
                     }
                 }
             }
@@ -129,5 +151,60 @@ class MainActivity : AppCompatActivity() {
 
         })
     }
+    /**
+     * Configures and displays the pagination controls for navigating through pages of game data.
+     *
+     * This method dynamically generates pagination buttons based on the current page and total pages.
+     * It ensures that only a range of pages (previous, current, next) are displayed for navigation.
+     *
+     * Behavior:
+     * - When a page number is clicked, it updates the `currentPage` and reloads the data.
+     * - The "Previous" button navigates to the previous page if available.
+     * - The "Next" button navigates to the next page if available.
+     *
+     * @author JFCiscoHuerta
+     */
+    private fun setupPagination() {
+        paginationLayout.removeAllViews()
+        paginationLayout.addView(previousButton)
 
+        val startPage = maxOf(1, currentPage - 1)
+        val endPage = minOf(totalPages, currentPage + 1)
+
+        for (i in startPage..endPage) {
+            val pageTextView = TextView(this).apply {
+                text = i.toString()
+                textSize = 16f
+                gravity = Gravity.CENTER
+                setBackgroundResource(R.drawable.circle_background)
+                setTextColor(ContextCompat.getColor(context, android.R.color.black))
+                layoutParams = LinearLayout.LayoutParams(100, 100).apply {
+                    marginEnd = 16
+                }
+
+                setOnClickListener {
+                    currentPage = i
+                    fetchGames(currentPage)
+                }
+            }
+
+            paginationLayout.addView(pageTextView)
+        }
+
+        paginationLayout.addView(nextButton)
+
+        previousButton.setOnClickListener {
+            if (currentPage > 1) {
+                currentPage--
+                fetchGames(currentPage)
+            }
+        }
+
+        nextButton.setOnClickListener {
+            if (currentPage < totalPages) {
+                currentPage++
+                fetchGames(currentPage)
+            }
+        }
+    }
 }
