@@ -18,7 +18,9 @@ interface IRetrofitService {
     /**
      * Retrieves a list of games from the API.
      *
-     * @return A response containing game data.
+     * @param apiKey The API key required for authentication.
+     * @param page The page number to retrieve (defaults to 1).
+     * @return A [Call] object containing a [GameResponse] with the list of games.
      */
     @GET("games")
     fun getGames(
@@ -26,6 +28,14 @@ interface IRetrofitService {
         @Query("page") page: Int = 1
     ): Call<GameResponse>
 
+    /**
+     * Retrieves detailed information about a specific game.
+     *
+     * @param id The unique identifier of the game.
+     * @param apiKey The API key required for authentication.
+     * @return A [Call] object containing a [GameDetail] with detailed information about the game.
+     *
+     */
     @GET("games/{id}")
     fun getGameDetails(
         @Path("id") id: Int,
