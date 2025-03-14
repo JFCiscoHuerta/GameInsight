@@ -1,5 +1,6 @@
 package com.gklyphon.gameinsight.services
 
+import com.gklyphon.gameinsight.models.Achievement
 import com.gklyphon.gameinsight.models.Game
 import com.gklyphon.gameinsight.models.GameDetail
 import com.gklyphon.gameinsight.models.GameResponse
@@ -42,4 +43,32 @@ interface IRetrofitService {
         @Query("key") apiKey: String
     ): Call<GameDetail>
 
+    /**
+     * Retrieves a list of achievements for a specific game.
+     *
+     * This endpoint fetches the achievements associated with the game, which can include
+     * details such as the name of the achievement, description, and unlock conditions.
+     *
+     * @param id The unique identifier of the game.
+     * @param apiKey The API key required for authentication.
+     * @return A [Call] object containing an [Achievement] with the game's achievements data.
+     */
+    @GET("games/{id}/achievements")
+    fun getGameAchievements(
+        @Path("id") id: Int,
+        @Query("key") apiKey: String
+    ): Call<Achievement>
+
+    /**
+     * Retrieves additional content (DLCs) for a specific game.
+     *
+     * @param id The unique identifier of the game.
+     * @param apiKey The API key required for authentication.
+     * @return A [Call] object containing a [GameDetail] with detailed information about the game's additions.
+     */
+    @GET("games/{id}/additions")
+    fun getGameAdditions(
+        @Path("id") id: Int,
+        @Query("key") apiKey: String
+    ): Call<GameDetail>
 }
