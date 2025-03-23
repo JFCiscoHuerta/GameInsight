@@ -1,6 +1,6 @@
 package com.gklyphon.gameinsight.models
 
-data class Achievement (
+object data class Achievement (
     val id: Long,
     val name: String,
     val description: String,
