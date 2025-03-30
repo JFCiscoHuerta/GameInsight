@@ -1,10 +1,13 @@
 package com.gklyphon.gameinsight.activities
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.gklyphon.gameinsight.BuildConfig
@@ -41,6 +44,20 @@ class DetailsActivity : AppCompatActivity() {
         val gamePlatform = findViewById<TextView>(R.id.game_platforms)
         val gameMinRequirements = findViewById<TextView>(R.id.min_requirements)
         val gameRequirements = findViewById<TextView>(R.id.requirements)
+        val btnViewDlcs = findViewById<Button>(R.id.btn_view_dlcs)
+
+
+        btnViewDlcs.setOnClickListener {
+            if (gameId != -1) {
+                val intent = Intent(this, AdditionsActivity::class.java)
+                intent.putExtra("GAME_ID", gameId)  // Pasamos el ID del juego a la nueva actividad
+                startActivity(intent)
+            } else {
+                Toast.makeText(this, "Error: No se recibió un ID de juego", Toast.LENGTH_SHORT).show()
+            }
+        }
+
+
 
         RetrofitClient.instance.getGameDetails(gameId, apiKey).enqueue(object: Callback<GameDetail> {
             override fun onResponse(call: Call<GameDetail>, response: Response<GameDetail>) {
