@@ -1,6 +1,7 @@
 package com.gklyphon.gameinsight.adapters
 
 import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -65,9 +66,9 @@ class GameAdapter(private var games: List<Game>) : RecyclerView.Adapter<GameAdap
 
         holder.detailsButton.setOnClickListener {
             val context = holder.itemView.context
+
             val intent = Intent(context, DetailsActivity::class.java)
-            intent.putExtra("GAME_ID", game.id)  // Pasar datos del juego
-            intent.putExtra("GAME_NAME", game.name)
+            intent.putExtra("GAME_ID", game.id)
             context.startActivity(intent)
         }
 
