@@ -157,7 +157,7 @@
                             android:id="@+id/game_top_rank"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="#3"
+                            android:text=""
                             android:textSize="16sp"
                             android:textStyle="bold" />
 
@@ -229,6 +229,21 @@
                         </androidx.cardview.widget.CardView>
 
                     </GridLayout>
+                    <Button
+                        android:id="@+id/btn_view_dlcs"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Ver DLCs"
+                        android:layout_marginTop="16dp"
+                        android:layout_gravity="center"/>
+                    <Button
+                        android:id="@+id/btn_view_Achievements"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Ver Achievements"
+                        android:layout_marginTop="16dp"
+                        android:layout_gravity="center"
+                        />
                 </LinearLayout>
 
                 <!-- About -->
@@ -252,7 +267,7 @@
                         android:id="@+id/game_description"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Descripción del videojuego aquí..."
+                        android:text=""
                         android:textSize="14sp"
                         android:textColor="@android:color/white" />
                 </LinearLayout>
@@ -286,7 +301,7 @@
                                 android:layout_height="wrap_content"/>
                             <TextView
                                 android:id="@+id/game_platforms"
-                                android:text="PC, PS5, Xbox"
+                                android:text=""
                                 android:textSize="14sp"
                                 android:textColor="@android:color/darker_gray"
                                 android:layout_width="wrap_content"
@@ -330,7 +345,7 @@
                                 android:layout_height="wrap_content"/>
                             <TextView
                                 android:id="@+id/game_release_date"
-                                android:text="Nov 20, 2024"
+                                android:text=""
                                 android:textSize="14sp"
                                 android:textColor="@android:color/darker_gray"
                                 android:layout_width="wrap_content"
@@ -413,22 +428,8 @@
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
                         <TextView
-                            android:text="OS: Windows 10"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"/>
-                        <TextView android:text="Processor: Intel Core i5"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"/>
-                        <TextView android:text="Memory: 8GB RAM"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"/>
-                        <TextView android:text="Graphics: NVIDIA GTX 1050 Ti"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"/>
-                        <TextView android:text="Storage: 50GB available space"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"/>
-                        <TextView android:text="Additional Notes: DirectX 12 required"
+                            android:id="@+id/min_requirements"
+                            android:text=""
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"/>
                     </LinearLayout>
@@ -446,22 +447,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
-                        <TextView android:text="OS: Windows 11"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"/>
-                        <TextView android:text="Processor: Intel Core i7"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"/>
-                        <TextView android:text="Memory: 16GB RAM"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"/>
-                        <TextView android:text="Graphics: NVIDIA RTX 3060"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"/>
-                        <TextView android:text="Storage: 50GB SSD space"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"/>
-                        <TextView android:text="Additional Notes: SSD recommended"
+                        <TextView
+                            android:id="@+id/requirements"
+                            android:text=""
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"/>
                     </LinearLayout>
