@@ -236,6 +236,14 @@
                         android:text="Ver DLCs"
                         android:layout_marginTop="16dp"
                         android:layout_gravity="center"/>
+                    <Button
+                        android:id="@+id/btn_view_Achievements"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Ver Achievements"
+                        android:layout_marginTop="16dp"
+                        android:layout_gravity="center"
+                        />
                 </LinearLayout>
 
                 <!-- About -->

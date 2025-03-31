@@ -1,5 +1,6 @@
 package com.gklyphon.gameinsight.services
 
+import com.gklyphon.gameinsight.adapters.AchievementsResponse
 import com.gklyphon.gameinsight.adapters.DlcItem
 import com.gklyphon.gameinsight.adapters.DlcResponse
 import com.gklyphon.gameinsight.models.Achievement
@@ -59,7 +60,7 @@ interface IRetrofitService {
     fun getGameAchievements(
         @Path("id") id: Int,
         @Query("key") apiKey: String
-    ): Call<Achievement>
+    ): Call<AchievementsResponse>
 
     /**
      * Retrieves additional content (DLCs) for a specific game.
