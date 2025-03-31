@@ -45,7 +45,7 @@ class DetailsActivity : AppCompatActivity() {
         val gameMinRequirements = findViewById<TextView>(R.id.min_requirements)
         val gameRequirements = findViewById<TextView>(R.id.requirements)
         val btnViewDlcs = findViewById<Button>(R.id.btn_view_dlcs)
-        val btnViewAchievement = findViewById<Button>(R.id.btn_view_Achievements)
+        val btnViewAchievement = findViewById<Button>(R.id.btn_view_achievements)
 
 
 
