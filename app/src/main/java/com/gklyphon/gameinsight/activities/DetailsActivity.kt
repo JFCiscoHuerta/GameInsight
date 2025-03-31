@@ -45,6 +45,8 @@ class DetailsActivity : AppCompatActivity() {
         val gameMinRequirements = findViewById<TextView>(R.id.min_requirements)
         val gameRequirements = findViewById<TextView>(R.id.requirements)
         val btnViewDlcs = findViewById<Button>(R.id.btn_view_dlcs)
+        val btnViewAchievement = findViewById<Button>(R.id.btn_view_achievements)
+
 
 
         btnViewDlcs.setOnClickListener {
@@ -56,6 +58,16 @@ class DetailsActivity : AppCompatActivity() {
                 Toast.makeText(this, "Error: No se recibió un ID de juego", Toast.LENGTH_SHORT).show()
             }
         }
+        btnViewAchievement.setOnClickListener {
+            if (gameId != -1) {
+                val intent = Intent(this, AchievementActivity::class.java)
+                intent.putExtra("GAME_ID", gameId)  // Pasamos el ID del juego a la nueva actividad
+                startActivity(intent)
+            } else {
+                Toast.makeText(this, "Error: No se recibió un ID de juego", Toast.LENGTH_SHORT).show()
+            }
+        }
+
 
 
 
