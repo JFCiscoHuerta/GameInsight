@@ -1,19 +1,183 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:fitsSystemWindows="true"
+    android:paddingBottom="16dp"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/black"
     tools:context=".MainActivity">
-    <TextView
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:text="Hello World!"
-      app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintTop_toTopOf="parent" />
 
-  </androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!-- Toolbar -->
+        <include
+            layout="@layout/toolbar" />
+
+        <ScrollView
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="70dp"
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+            tools:ignore="MissingConstraints">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="8dp">
+
+                <!-- Título principal -->
+                <TextView
+                    android:id="@+id/main_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Game Reviews and more!"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    app:layout_constraintTop_toBottomOf="@id/toolbar"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_gravity="center"/>
+
+                <!-- Menús -->
+                <LinearLayout
+                    android:id="@+id/menus_layout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="16dp"
+                    android:gravity="center"
+                    app:layout_constraintTop_toBottomOf="@id/main_title"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:backgroundTint="@color/white">
+
+                    <!-- Menú 1: Order By -->
+                    <Spinner
+                        android:id="@+id/spinner_order"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:spinnerMode="dropdown"
+                        android:entries="@array/order_options"/>
+
+                    <!-- Espaciador -->
+                    <Space
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:backgroundTint="@color/gray">
+
+                    </Space>
+
+                    <!-- Menú 2: Platform -->
+                    <Spinner
+                        android:id="@+id/spinner_platform"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:spinnerMode="dropdown"
+                        android:entries="@array/platform_options" />
+                </LinearLayout>
+
+                <!-- Card Recycler -->
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scrollbars="vertical" />
+
+                <!-- Paginacion -->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_marginTop="16dp">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center">
+
+                        <TextView
+                            android:id="@+id/btn_previous"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:text="←"
+                            android:textSize="16sp"
+                            android:gravity="center"
+                            android:background="@drawable/circle_background"
+                            android:textColor="@android:color/black"
+                            android:layout_marginEnd="8dp" />
+
+                        <TextView
+                            android:id="@+id/page_1"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:text="1"
+                            android:textSize="16sp"
+                            android:gravity="center"
+                            android:background="@drawable/circle_background"
+                            android:textColor="@android:color/black"
+                            android:layout_marginEnd="8dp" />
+
+                        <TextView
+                            android:id="@+id/page_2"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:text="2"
+                            android:textSize="16sp"
+                            android:gravity="center"
+                            android:background="@drawable/circle_background"
+                            android:textColor="@android:color/black"
+                            android:layout_marginEnd="8dp" />
+
+                        <TextView
+                            android:id="@+id/page_3"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:text="3"
+                            android:textSize="16sp"
+                            android:gravity="center"
+                            android:background="@drawable/circle_background"
+                            android:textColor="@android:color/black"
+                            android:layout_marginEnd="8dp" />
+
+                        <TextView
+                            android:id="@+id/btn_next"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:text="→"
+                            android:textSize="16sp"
+                            android:gravity="center"
+                            android:background="@drawable/circle_background"
+                            android:textColor="@android:color/black" />
+                    </LinearLayout>
+                </RelativeLayout>
+
+            </LinearLayout>
+
+
+        </ScrollView>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+    <include
+        layout="@layout/floating_button"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
