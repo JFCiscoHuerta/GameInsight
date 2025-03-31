@@ -1,5 +1,7 @@
 package com.gklyphon.gameinsight.services
 
+import com.gklyphon.gameinsight.adapters.DlcItem
+import com.gklyphon.gameinsight.adapters.DlcResponse
 import com.gklyphon.gameinsight.models.Achievement
 import com.gklyphon.gameinsight.models.Game
 import com.gklyphon.gameinsight.models.GameDetail
@@ -70,5 +72,5 @@ interface IRetrofitService {
     fun getGameAdditions(
         @Path("id") id: Int,
         @Query("key") apiKey: String
-    ): Call<GameDetail>
+    ): Call<DlcResponse>
 }
