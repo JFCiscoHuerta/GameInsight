@@ -44,6 +44,16 @@
                         android:layout_height="200dp"
                         android:scaleType="centerCrop" />
 
+                    <!-- Título del videojuego -->
+                    <TextView
+                        android:id="@+id/game_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Título del Videojuego"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:paddingTop="4dp" />
+
                     <!-- Contenedor de fecha e iconos de consola -->
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -72,69 +82,77 @@
                         </LinearLayout>
                     </LinearLayout>
 
-                    <!-- Título del videojuego -->
-                    <TextView
-                        android:id="@+id/game_title"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Título del Videojuego"
-                        android:textSize="18sp"
-                        android:textStyle="bold"
-                        android:paddingTop="4dp" />
+
                 </LinearLayout>
 
-                <!-- Popularity -->
+                <!-- Popularity Section -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:baselineAligned="false"
                     android:orientation="horizontal"
-                    android:padding="8dp">
+                    android:paddingHorizontal="16dp"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="16dp">
 
-                    <!-- Columna de título y ratings -->
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-
-                        <!-- Título de calificación -->
-                        <TextView
-                            android:id="@+id/game_rating_title"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Excepcional"
-                            android:textSize="16sp"
-                            android:textStyle="bold" />
-
-                        <!-- Total de ratings -->
-                        <TextView
-                            android:id="@+id/game_total_ratings"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="1,245 ratings"
-                            android:textSize="14sp"
-                            android:textColor="@android:color/darker_gray" />
-                    </LinearLayout>
-
-                    <!-- Columna de popularidad y género -->
+                    <!-- Rating Column -->
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:orientation="vertical"
-                        android:gravity="center_horizontal">
+                        android:gravity="center">
 
-                        <!-- Posición de popularidad -->
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Rating"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:textColor="@android:color/darker_gray"
+                            android:paddingBottom="4dp" />
+
+                        <TextView
+                            android:id="@+id/game_rating_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="4.47"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/game_total_ratings"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="7067"
+                            android:textSize="14sp"
+                            android:textColor="@android:color/darker_gray" />
+                    </LinearLayout>
+
+                    <!-- Popularity Column -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="center">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Popularity"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:textColor="@android:color/darker_gray"
+                            android:paddingBottom="4dp" />
+
                         <TextView
                             android:id="@+id/game_popularity_rank"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="#10"
+                            android:text="5"
                             android:textSize="16sp"
                             android:textStyle="bold" />
 
-                        <!-- Género principal -->
                         <TextView
                             android:id="@+id/game_genre"
                             android:layout_width="wrap_content"
@@ -144,24 +162,31 @@
                             android:textColor="@android:color/darker_gray" />
                     </LinearLayout>
 
-                    <!-- Columna de ranking anual -->
+                    <!-- Top Ranking Column -->
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:orientation="vertical"
-                        android:gravity="center_horizontal">
+                        android:gravity="center">
 
-                        <!-- Ranking anual -->
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Top Ranking"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:textColor="@android:color/darker_gray"
+                            android:paddingBottom="4dp" />
+
                         <TextView
                             android:id="@+id/game_top_rank"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text=""
+                            android:text="#5"
                             android:textSize="16sp"
                             android:textStyle="bold" />
 
-                        <!-- Etiqueta de ranking anual -->
                         <TextView
                             android:id="@+id/game_top_year"
                             android:layout_width="wrap_content"
@@ -172,86 +197,41 @@
                     </LinearLayout>
                 </LinearLayout>
 
-                <!-- Where to buy -->
+
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="8dp">
+                    android:orientation="horizontal"
+                    android:padding="8dp"
+                    android:gravity="center_horizontal">
 
-                    <!-- Título -->
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Where to buy?"
-                        android:textSize="18sp"
-                        android:textStyle="bold"
-                        android:paddingBottom="8dp" />
-
-                    <!-- Grid de tarjetas de tiendas -->
-                    <GridLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:columnCount="2">
-
-                        <!-- Tarjeta de tienda -->
-                        <androidx.cardview.widget.CardView
-                            android:layout_width="150dp"
-                            android:layout_height="wrap_content"
-                            android:layout_columnSpan="1"
-                            android:layout_gravity="fill"
-                            android:layout_margin="8dp"
-                            app:cardCornerRadius="12dp"
-                            app:cardElevation="4dp"
-                            app:cardBackgroundColor="@color/gray">
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal"
-                                android:padding="12dp"
-                                android:gravity="center_vertical">
-
-                                <ImageView
-                                    android:layout_width="24dp"
-                                    android:layout_height="24dp"
-                                    android:src="@drawable/ic_steam" />
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginStart="8dp"
-                                    android:text="Steam"
-                                    android:textSize="16sp"
-                                    android:textStyle="bold"
-                                    android:textColor="@color/white"/>
-                            </LinearLayout>
-                        </androidx.cardview.widget.CardView>
-
-                    </GridLayout>
                     <Button
                         android:id="@+id/btn_view_dlcs"
-                        android:layout_width="wrap_content"
+                        android:text="DLCS"
+                        android:layout_width="150dp"
                         android:layout_height="wrap_content"
-                        android:text="Ver DLCs"
-                        android:layout_marginTop="16dp"
-                        android:layout_gravity="center"/>
+                        android:layout_margin="8dp"
+                        android:background="@drawable/rounded_button" />
+
                     <Button
                         android:id="@+id/btn_view_achievements"
-                        android:layout_width="wrap_content"
+                        android:text="Achievements"
+                        android:layout_width="150dp"
                         android:layout_height="wrap_content"
-                        android:text="Ver Achievements"
-                        android:layout_marginTop="16dp"
-                        android:layout_gravity="center"
-                        />
+                        android:layout_margin="8dp"
+                        android:background="@drawable/rounded_button" />
+
                 </LinearLayout>
+
 
                 <!-- About -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:padding="8dp">
+                    android:padding="16dp"
+                    android:background="#1E1E1E">
 
                     <!-- Título de la sección -->
                     <TextView
@@ -260,7 +240,8 @@
                         android:text="About"
                         android:textSize="18sp"
                         android:textStyle="bold"
-                        android:paddingBottom="4dp" />
+                        android:textColor="@android:color/white"
+                        android:paddingBottom="8dp" />
 
                     <!-- Descripción del videojuego -->
                     <TextView
@@ -268,9 +249,14 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text=""
-                        android:textSize="14sp"
-                        android:textColor="@android:color/white" />
+                        android:textSize="15sp"
+                        android:textColor="#DDDDDD"
+                        android:lineSpacingExtra="4dp"
+                        android:justificationMode="inter_word"
+                        android:paddingBottom="8dp"
+                        android:textAlignment="viewStart" />
                 </LinearLayout>
+
 
                 <!-- Info -->
                 <LinearLayout
@@ -278,37 +264,52 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:padding="8dp">
+                    android:padding="16dp"
+                    android:background="#1E1E1E">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Info"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:textColor="@android:color/white"
+                        android:paddingBottom="12dp" />
 
                     <GridLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:columnCount="2"
-                        android:padding="8dp">
+                        android:useDefaultMargins="true"
+                        android:alignmentMode="alignMargins"
+                        android:rowOrderPreserved="false">
 
-                        <!-- Columna: Platforms -->
+                        <!-- Platforms -->
                         <LinearLayout
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_columnWeight="1"
-                            android:orientation="vertical">
+                            android:orientation="vertical"
+                            android:layout_marginEnd="8dp">
 
                             <TextView
                                 android:text="Platforms"
-                                android:textSize="18sp"
+                                android:textSize="16sp"
                                 android:textStyle="bold"
+                                android:textColor="@android:color/white"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"/>
+                                android:layout_height="wrap_content" />
+
                             <TextView
                                 android:id="@+id/game_platforms"
-                                android:text=""
+                                android:text="PC, PS5, Xbox Series X"
                                 android:textSize="14sp"
-                                android:textColor="@android:color/darker_gray"
+                                android:textColor="#BBBBBB"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"/>
+                                android:layout_height="wrap_content" />
                         </LinearLayout>
 
-                        <!-- Columna: Genre -->
+                        <!-- Genre -->
                         <LinearLayout
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
@@ -317,94 +318,81 @@
 
                             <TextView
                                 android:text="Genre"
-                                android:textSize="18sp"
+                                android:textSize="16sp"
                                 android:textStyle="bold"
+                                android:textColor="@android:color/white"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"/>
+                                android:layout_height="wrap_content" />
+
                             <TextView
                                 android:id="@+id/game_genre1"
                                 android:text="Shooter"
                                 android:textSize="14sp"
-                                android:textColor="@android:color/darker_gray"
+                                android:textColor="#BBBBBB"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"/>
+                                android:layout_height="wrap_content" />
                         </LinearLayout>
 
-                        <!-- Columna: Release Date -->
+                        <!-- Release Date -->
                         <LinearLayout
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_columnWeight="1"
-                            android:orientation="vertical">
+                            android:orientation="vertical"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginEnd="8dp">
 
                             <TextView
                                 android:text="Release Date"
-                                android:textSize="18sp"
+                                android:textSize="16sp"
                                 android:textStyle="bold"
+                                android:textColor="@android:color/white"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"/>
+                                android:layout_height="wrap_content" />
+
                             <TextView
                                 android:id="@+id/game_release_date"
-                                android:text=""
+                                android:text="Mar 15, 2025"
                                 android:textSize="14sp"
-                                android:textColor="@android:color/darker_gray"
+                                android:textColor="#BBBBBB"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"/>
+                                android:layout_height="wrap_content" />
                         </LinearLayout>
 
-                        <!-- Columna: Developer -->
+                        <!-- Developer -->
                         <LinearLayout
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_columnWeight="1"
-                            android:orientation="vertical">
+                            android:orientation="vertical"
+                            android:layout_marginTop="8dp">
 
                             <TextView
                                 android:text="Developer"
-                                android:textSize="18sp"
+                                android:textSize="16sp"
                                 android:textStyle="bold"
+                                android:textColor="@android:color/white"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"/>
+                                android:layout_height="wrap_content" />
+
                             <TextView
                                 android:id="@+id/game_developer"
                                 android:text="Game Studio X"
                                 android:textSize="14sp"
-                                android:textColor="@android:color/darker_gray"
+                                android:textColor="#BBBBBB"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"/>
-                        </LinearLayout>
-
-                        <!-- Columna: Publisher -->
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_columnWeight="1"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:text="Publisher"
-                                android:textSize="18sp"
-                                android:textStyle="bold"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"/>
-                            <TextView
-                                android:id="@+id/game_publisher"
-                                android:text="Publisher Y"
-                                android:textSize="14sp"
-                                android:textColor="@android:color/darker_gray"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"/>
+                                android:layout_height="wrap_content" />
                         </LinearLayout>
                     </GridLayout>
                 </LinearLayout>
 
-
-                <!-- Requeriments -->
+                <!-- Requirements -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:padding="8dp">
+                    android:padding="16dp"
+                    android:background="#1E1E1E">
 
                     <!-- Título de la sección -->
                     <TextView
@@ -413,47 +401,53 @@
                         android:text="System requirements for PC"
                         android:textSize="18sp"
                         android:textStyle="bold"
-                        android:paddingBottom="8dp" />
+                        android:textColor="@android:color/white"
+                        android:paddingBottom="12dp" />
 
-                    <!-- Requisitos Mínimos -->
+                    <!-- Mínimos -->
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Minimum"
                         android:textSize="16sp"
                         android:textStyle="bold"
+                        android:textColor="#CCCCCC"
                         android:paddingBottom="4dp" />
-                    <LinearLayout
+
+                    <TextView
+                        android:id="@+id/min_requirements"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical">
-                        <TextView
-                            android:id="@+id/min_requirements"
-                            android:text=""
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"/>
-                    </LinearLayout>
+                        android:text=""
+                        android:textSize="14sp"
+                        android:textColor="#BBBBBB"
+                        android:lineSpacingExtra="4dp"
+                        android:justificationMode="inter_word"
+                        android:textAlignment="viewStart" />
 
-                    <!-- Requisitos Recomendados -->
+                    <!-- Recomendados -->
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Recommended"
                         android:textSize="16sp"
                         android:textStyle="bold"
-                        android:paddingTop="8dp"
+                        android:textColor="#CCCCCC"
+                        android:paddingTop="12dp"
                         android:paddingBottom="4dp" />
-                    <LinearLayout
+
+                    <TextView
+                        android:id="@+id/requirements"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical">
-                        <TextView
-                            android:id="@+id/requirements"
-                            android:text=""
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"/>
-                    </LinearLayout>
+                        android:text=""
+                        android:textSize="14sp"
+                        android:textColor="#BBBBBB"
+                        android:lineSpacingExtra="4dp"
+                        android:justificationMode="inter_word"
+                        android:textAlignment="viewStart" />
                 </LinearLayout>
+
 
             </LinearLayout>
 

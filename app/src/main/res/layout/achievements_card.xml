@@ -15,7 +15,8 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center_vertical"
-        android:padding="12dp">
+        android:padding="12dp"
+        android:background="@drawable/rounded_button">
 
         <ImageView
             android:id="@+id/achievementsIcon"
@@ -34,11 +35,26 @@
                 android:id="@+id/achievementsTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="achievements Name"
+                android:text=""
                 android:textSize="16sp"
                 android:textStyle="bold"
                 android:textColor="@android:color/white"/>
 
+            <TextView
+                android:id="@+id/achievementsDescription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="14sp"
+                android:textColor="@android:color/white"/>
+
+            <TextView
+                android:id="@+id/achievementsPercent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="12sp"
+                android:textColor="@android:color/white"/>
         </LinearLayout>
 
     </LinearLayout>
