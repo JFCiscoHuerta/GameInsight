@@ -144,8 +144,5 @@
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
-    <include
-        layout="@layout/floating_button"/>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

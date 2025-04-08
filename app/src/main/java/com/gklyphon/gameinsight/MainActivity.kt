@@ -1,13 +1,8 @@
 package com.gklyphon.gameinsight
 
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.Gravity
-import android.view.View
-import android.view.animation.Animation
-import android.view.animation.AnimationUtils
-import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
@@ -15,12 +10,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.gklyphon.gameinsight.activities.DetailsActivity
 import com.gklyphon.gameinsight.adapters.GameAdapter
 import com.gklyphon.gameinsight.models.Game
 import com.gklyphon.gameinsight.models.GameResponse
 import com.gklyphon.gameinsight.services.RetrofitClient
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -33,10 +26,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var gameAdapter: GameAdapter
     private val gameList = mutableListOf<Game>()
 
-    private lateinit var fabMain: FloatingActionButton
-    private lateinit var fabAchives: FloatingActionButton
-    private lateinit var fabDlcs: FloatingActionButton
-    private var isFabMenuOpen = false
 
     private lateinit var paginationLayout: LinearLayout
     private lateinit var previousButton: TextView
@@ -58,49 +47,9 @@ class MainActivity : AppCompatActivity() {
         previousButton = findViewById(R.id.btn_previous)
         nextButton = findViewById(R.id.btn_next)
 
-        fabMain = findViewById(R.id.fab_main)
-        fabAchives = findViewById(R.id.fab_avhives)
-        fabDlcs = findViewById(R.id.fab_dlcs)
-        configureView()
-
-        configureView()
         setupPagination()
         fetchGames(currentPage)
 
-    }
-
-    private fun configureView() {
-        // Cargar animaciones
-        val fabOpen: Animation = AnimationUtils.loadAnimation(this, R.anim.fab_open)
-        val fabClose: Animation = AnimationUtils.loadAnimation(this, R.anim.fab_close)
-
-        // Configurar el clic del botón principal
-        fabMain.setOnClickListener {
-            if (isFabMenuOpen) {
-                // Cerrar el menú
-                fabAchives.startAnimation(fabClose)
-                fabDlcs.startAnimation(fabClose)
-                fabAchives.visibility = View.GONE
-                fabDlcs.visibility = View.GONE
-            } else {
-                // Abrir el menú
-                fabAchives.startAnimation(fabOpen)
-                fabDlcs.startAnimation(fabOpen)
-                fabAchives.visibility = View.VISIBLE
-                fabDlcs.visibility = View.VISIBLE
-            }
-            isFabMenuOpen = !isFabMenuOpen
-        }
-
-        // Configurar el clic del botón "Logos"
-        fabAchives.setOnClickListener {
-            // Acción para el botón "Logos"
-        }
-
-        // Configurar el clic del botón "DLCs"
-        fabDlcs.setOnClickListener {
-            // Acción para el botón "DLCs"
-        }
     }
 
     /**
