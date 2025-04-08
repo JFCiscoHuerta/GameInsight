@@ -30,7 +30,6 @@ class DetailsActivity : AppCompatActivity() {
         val gameId = intent.getIntExtra("GAME_ID", -1)
 
         val gameImage = findViewById<ImageView>(R.id.game_image)
-        val gameDate = findViewById<TextView>(R.id.game_date)
         val gameConsoles = findViewById<LinearLayout>(R.id.game_consoles)
         val gameTitle = findViewById<TextView>(R.id.game_title)
         val gameRatingTitle = findViewById<TextView>(R.id.game_rating_title)
@@ -47,6 +46,7 @@ class DetailsActivity : AppCompatActivity() {
         val gameRequirements = findViewById<TextView>(R.id.requirements)
         val btnViewDlcs = findViewById<Button>(R.id.btn_view_dlcs)
         val btnViewAchievement = findViewById<Button>(R.id.btn_view_achievements)
+        val gameDeveloper = findViewById<TextView>(R.id.game_developer)
 
 
 
@@ -79,7 +79,6 @@ class DetailsActivity : AppCompatActivity() {
                     game?.let {
                         findViewById<TextView>(R.id.game_title).text = it.name
                         Glide.with(this@DetailsActivity).load(it.backgroundImage).into(gameImage)
-                        gameDate.text = it.released
                         gameTitle.text = it.name
                         gameRatingTitle.text = it.rating.toString()
                         gameTotalRatings.text = it.ratingsCount.toString()
@@ -92,6 +91,7 @@ class DetailsActivity : AppCompatActivity() {
                         gameRequirements.text = it.platforms?.map { platform -> platform.requirements?.recommended }.toString()
                         gameGenre.text = it.genres.joinToString(", ") { genre -> genre.name }
                         gameGenreInfo.text = it.genres.joinToString(", ") { genre -> genre.name }
+                        gameDeveloper.text = it.developers.joinToString(", ") { developer -> developer.name }
                     }
                 }
             }
