@@ -37,30 +37,6 @@
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
-                <!-- Barra de búsqueda -->
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="250dp"
-                    android:layout_height="wrap_content"
-                    android:hint="Buscar..."
-                    app:boxStrokeColor="@color/white"
-                    app:boxBackgroundMode="filled"
-                    app:boxBackgroundColor="@color/white"
-                    android:background="@drawable/search_background">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/search_edit_text"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textColor="@android:color/black"
-                        android:background="@android:color/white"
-                        android:textColorHint="@android:color/darker_gray"
-                        android:paddingStart="8dp"
-                        android:paddingEnd="8dp"
-                        android:paddingTop="8dp"
-                        android:paddingBottom="8dp"/>
-                </com.google.android.material.textfield.TextInputLayout>
-
-
             </LinearLayout>
         </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
