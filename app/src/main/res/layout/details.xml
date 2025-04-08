@@ -62,15 +62,6 @@
                         android:gravity="center_vertical"
                         android:paddingTop="4dp">
 
-                        <!-- Fecha -->
-                        <TextView
-                            android:id="@+id/game_date"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="20 Nov, 2024"
-                            android:textSize="14sp"
-                            android:textColor="@android:color/darker_gray" />
-
                         <!-- Espacio para iconos de consolas -->
                         <LinearLayout
                             android:id="@+id/game_consoles"
