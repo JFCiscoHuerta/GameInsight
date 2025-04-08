@@ -37,6 +37,7 @@ class DetailsActivity : AppCompatActivity() {
         val gameTotalRatings = findViewById<TextView>(R.id.game_total_ratings)
         val gamePopularityRank = findViewById<TextView>(R.id.game_popularity_rank)
         val gameGenre = findViewById<TextView>(R.id.game_genre)
+        val gameGenreInfo = findViewById<TextView>(R.id.game_genre_info)
         val gameTopRank = findViewById<TextView>(R.id.game_top_rank)
         val gameTopYear = findViewById<TextView>(R.id.game_top_year)
         val gameDescription = findViewById<TextView>(R.id.game_description)
@@ -89,7 +90,8 @@ class DetailsActivity : AppCompatActivity() {
                         gamePlatform.text = it.platforms?.map { platform -> platform.platform.name }?.joinToString(", ")
                         gameMinRequirements.text = it.platforms?.map { platform -> platform.requirements?.minimum }.toString()
                         gameRequirements.text = it.platforms?.map { platform -> platform.requirements?.recommended }.toString()
-
+                        gameGenre.text = it.genres.joinToString(", ") { genre -> genre.name }
+                        gameGenreInfo.text = it.genres.joinToString(", ") { genre -> genre.name }
                     }
                 }
             }

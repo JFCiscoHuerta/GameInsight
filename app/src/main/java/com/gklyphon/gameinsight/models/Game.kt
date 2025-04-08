@@ -17,7 +17,8 @@ data class Game (
     val suggestions_count: Int,
     val updated: String,
     val esrb_rating: EsrbRating?,
-    val platforms: List<PlatformWrapper>
+    val platforms: List<PlatformWrapper>,
+    val genres: List<Genre>
 )
 
 data class EsrbRating (

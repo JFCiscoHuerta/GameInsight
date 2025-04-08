@@ -47,7 +47,9 @@ data class GameDetail (
     @SerializedName("suggestions_count") val suggestionsCount: Int,
     @SerializedName("metacritic_url") val metacriticUrl: String?,
     @SerializedName("esrb_rating") val esrbRating: EsrbRating?,
-    val platforms: List<PlatformInfo>?
+    val platforms: List<PlatformInfo>?,
+    val genres: List<Genre>
+
 )
 
 /**
@@ -63,4 +65,9 @@ data class PlatformInfo(
     val platform: Platform,
     @SerializedName("released_at") val releasedAt: String?,
     val requirements: Requirements?
+)
+
+data class Genre(
+    val id: Long,
+    val name: String
 )

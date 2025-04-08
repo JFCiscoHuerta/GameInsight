@@ -58,7 +58,7 @@ class GameAdapter(private var games: List<Game>) : RecyclerView.Adapter<GameAdap
         val game = games[position]
         holder.gameTitle.text = game.name
         holder.gameRating.text = "Rating: ${game.rating}"
-        holder.gameGenre.text = "Genre: n/a"
+        holder.gameGenre.text = game.genres.joinToString(", ") { genre -> genre.name }
 
         Glide.with(holder.itemView.context)
             .load(game.background_image)

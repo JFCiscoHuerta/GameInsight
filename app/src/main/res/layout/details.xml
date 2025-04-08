@@ -157,7 +157,7 @@
                             android:id="@+id/game_genre"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Shooter"
+                            android:text=""
                             android:textSize="14sp"
                             android:textColor="@android:color/darker_gray" />
                     </LinearLayout>
@@ -325,8 +325,8 @@
                                 android:layout_height="wrap_content" />
 
                             <TextView
-                                android:id="@+id/game_genre1"
-                                android:text="Shooter"
+                                android:id="@+id/game_genre_info"
+                                android:text=""
                                 android:textSize="14sp"
                                 android:textColor="#BBBBBB"
                                 android:layout_width="wrap_content"
