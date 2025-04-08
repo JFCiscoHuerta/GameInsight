@@ -51,7 +51,6 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     android:layout_gravity="center"/>
 
-                <!-- Menús -->
                 <LinearLayout
                     android:id="@+id/menus_layout"
                     android:layout_width="wrap_content"
@@ -66,31 +65,12 @@
                     android:layout_marginEnd="16dp"
                     android:backgroundTint="@color/white">
 
-                    <!-- Menú 1: Order By -->
-                    <Spinner
-                        android:id="@+id/spinner_order"
-                        android:layout_width="150dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:spinnerMode="dropdown"
-                        android:entries="@array/order_options"/>
-
                     <!-- Espaciador -->
                     <Space
                         android:layout_width="16dp"
                         android:layout_height="16dp"
                         android:backgroundTint="@color/gray">
-
                     </Space>
-
-                    <!-- Menú 2: Platform -->
-                    <Spinner
-                        android:id="@+id/spinner_platform"
-                        android:layout_width="150dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:spinnerMode="dropdown"
-                        android:entries="@array/platform_options" />
                 </LinearLayout>
 
                 <!-- Card Recycler -->
