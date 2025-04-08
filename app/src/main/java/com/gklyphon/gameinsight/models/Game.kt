@@ -21,6 +21,11 @@ data class Game (
     val genres: List<Genre>
 )
 
+data class Developer(
+    val id: Long,
+    val name: String
+)
+
 data class EsrbRating (
     val id: Long,
     val slug: String,

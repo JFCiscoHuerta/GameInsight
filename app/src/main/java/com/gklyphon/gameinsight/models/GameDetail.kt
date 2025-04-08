@@ -48,7 +48,8 @@ data class GameDetail (
     @SerializedName("metacritic_url") val metacriticUrl: String?,
     @SerializedName("esrb_rating") val esrbRating: EsrbRating?,
     val platforms: List<PlatformInfo>?,
-    val genres: List<Genre>
+    val genres: List<Genre>,
+    val developers: List<Developer>
 
 )
 
