@@ -22,7 +22,7 @@ class AchievementActivity : AppCompatActivity() {
     private val apiKey = BuildConfig.RAWG_API_KEY
     private lateinit var recyclerView: RecyclerView
     private lateinit var achievementsAdapter: AchievementsAdapter
-    private var achievementList = mutableListOf<Achievement>()
+    var achievementList = mutableListOf<Achievement>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
